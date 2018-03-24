@@ -1,0 +1,32 @@
+.container, table {
+    margin: 0 auto;
+    text-align: center;
+}
+.header {
+    margin: 0.5rem;
+}
+.header h2 {
+    display: inline-block;
+    border-bottom: 1px solid #999;
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+}
+.header h2 i {
+    margin-right: 0.5rem;
+}
+input[type="radio"] {
+    padding: 0.5rem;
+    margin: 0.5rem 1rem;
+}
+table th, table td {
+    padding: 0.5rem 1rem;
+}
+table thead th {
+    border-bottom: 1px solid #999;
+}
+table thead th:not(:last-of-type) {
+    border-right: 1px solid #999;
+}
+table tbody th, table td:not(:last-of-type) {
+    border-right: 1px solid #999;
+}
