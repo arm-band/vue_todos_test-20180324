@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Todoサンプル</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <div id="todo" class="container">
+        <div id="input">
+            <div class="header">
+                <h2><i class="el-icon-tickets" aria-hidden="true"></i>Add Todo</h2>
+            </div>
+            <form class="add-form" v-on:submit.prevent="doAdd">
+                <input ref="comment">
+                <button type="submit" class="btn btn-success"><i class="el-icon-circle-plus" aria-hidden="true"></i>追加</button>
+            </form>
+        </div>
+        <div id="search">
+            <div class="header">
+                <h2><i class="el-icon-zoom-in" aria-hidden="true"></i>Search</h2>
+            </div>
+            <label v-for="label in labels">
+                <input type="radio" v-model="current" v-bind:value="label.value">{{ label.label }}
+            </label>
+            ({{ computedTodos.length }} 件を表示中)
+        </div>
+        <div id="list">
+            <div class="header">
+                <h2><i class="el-icon-date" aria-hidden="true"></i>Todos</h2>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="id">id</th>
+                        <th class="comment">内容</th>
+                        <th class="status">状態</th>
+                        <th class="button">処理</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in computedTodos" v-bind:key="item.id">
+                        <th>{{ item.id }}</th>
+                        <td>{{ item.comment }}</td>
+                        <td class="state">
+                            <button class="btn btn-primary" v-on:click="doChangeState(item)">{{ toLabel(item.state) }}</button>
+                        </td>
+                        <td class="button">
+                            <button class="btn btn-warning" v-on:click.ctrl="doRemove(item)"><i class="el-icon-circle-close" aria-hidden="true"></i>削除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
